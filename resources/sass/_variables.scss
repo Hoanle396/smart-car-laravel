@@ -1,0 +1,16 @@
+// Body
+$body-bg: #FFFFFF;
+$red : #FF1818;
+$blue: #1363DF;
+$yellow: #F7EC09;
+// Typography
+$font-family-sans-serif: 'Times New Roman', sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+$theme-colors: (
+  "primary": $blue,
+  "danger": $red,
+  "warning":$yellow,
+  "white":#FFFFFF,
+  "dark":#000000,
+);

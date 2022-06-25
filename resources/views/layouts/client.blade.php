@@ -53,7 +53,7 @@ $zalo=DB::table('settings')->where('name','zalo')->select('value')->first();
                                     <div class="form-outline d-flex">
                                         <input type="hidden" name="hang" value="all">
                                         <input type="text" name="tukhoa" class="form-control-md border-0 rounded-pill" placeholder="{{__('lang.search')}}" aria-label="Search" />
-                                        <label for="search"><button type="submit" class=" border-0"><i class="fas fa-search mt-1"></i></button></label>
+                                        <label for="search"><button type="submit" style="background-color:{{$background->value}} !important;" class=" border-0"><i class="fas fa-search mt-1"></i></button></label>
 
                                     </div>
                             </div>

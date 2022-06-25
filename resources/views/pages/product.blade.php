@@ -5,7 +5,7 @@
 $name='name_'.app()->getlocale();
 @endphp
 <div class="position-relative flex justify-center items-center " style="margin-top: -10px;">
-    <img src="{{asset('public/images/221340M_1920x1080.webp')}}" class="w-100 img-fluid object-fit-cover">
+    <img src="{{asset('public/images/evo-page-banner.webp')}}" class="w-100 img-fluid object-fit-cover">
     <div class="position-absolute bottom-0 start-0 d-flex flex-col items-center">
         <b class="text-danger fs-3">{{__('lang.xedangco')}}</b>
     </div>

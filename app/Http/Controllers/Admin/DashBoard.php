@@ -6,10 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Car;
 use App\Models\CarBrand;
 use Illuminate\Http\Request;
-use App\Models\Categories;
 use App\Models\News;
 use App\Models\Service;
 use App\Models\Setting;
+use App\Models\Feedback;
 
 class DashBoard extends Controller
 {
@@ -19,7 +19,8 @@ class DashBoard extends Controller
         $new=News::count();
         $brand=CarBrand::count();
         $car = Car::count();
-        return view('admin.dashboard.index', compact('car','brand','services','new'));
+        $feedbacks=Feedback::latest()->paginate(8);
+        return view('admin.dashboard.index', compact('car','brand','services','new','feedbacks'));
     }
 
 
@@ -51,12 +52,11 @@ class DashBoard extends Controller
     }
     public function getsetting()
     {
-        $category = Categories::all();
         $settings = Setting::all();
         $setting = [];
         foreach ($settings as $data) {
             $setting["$data->name"] = $data->value;
         }
-        return view('admin.setting.general', compact('category', 'setting'));
+        return view('admin.setting.general', compact( 'setting'));
     }
 }

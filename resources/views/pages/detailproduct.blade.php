@@ -6,6 +6,9 @@ $description='description_'.app()->getlocale();
 @endphp
 <meta name="description" content="{{$car->$name}}" />
 <meta name="keywords" content="{{$car->$name}}" />
+<link rel="stylesheet" href="{{asset('public/owlcarousel/dist/assets/owl.carousel.min.css')}}" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="{{asset('public/owlcarousel/dist/assets/owl.theme.default.min.css')}}" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 @endsection
 @section('title','Detail')
 @section('content')
@@ -20,60 +23,16 @@ $hotline=DB::table('settings')->where('name','hotline')->select('value')->first(
                     <img class="card-img img-fluid" src="{{asset(json_decode($car->images)[0])}}" alt="Card image cap" id="product-detail">
                 </div>
                 <div class="row">
-                    <!--Start Controls-->
-                    <div class="col-1 align-self-center">
-                        <a href="#multi-item-example" role="button" data-bs-slide="prev">
-                            <i class="text-dark fas fa-chevron-left"></i>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                    </div>
-                    <!--End Controls-->
-                    <!--Start Carousel Wrapper-->
-                    <div id="multi-item-example" class="col-10 carousel slide carousel-multi-item" data-bs-ride="carousel">
-                        <!--Start Slides-->
-                        <div class="carousel-inner product-links-wap" role="listbox">
-
-                            <!--First slide-->
-                            <div class="carousel-item active">
-                                <div class="row">
+                    <div id="owl-carousel" class="owl-carousel owl-theme " >
                                     @foreach (json_decode($car->images) as $img)
-                                    <div class="col-4">
+                                    <div class="item product-links-wap border bolder-1 mx-1">
                                         <a href="#">
-                                            <img class="card-img img-fluid" src="{{asset($img)}}" alt="{{$img}}">
+                                            <img class="img-fluid object-fit-cover"  src="{{asset($img)}}" alt="{{$img}}">
                                         </a>
                                     </div>
                                     @endforeach
-
-                                </div>
-                            </div>
-                            <!--/.First slide-->
-
-                            <!--Second slide-->
-                            <div class="carousel-item">
-                                <div class="row">
-                                    @foreach (json_decode($car->images) as $img)
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="{{asset($img)}}" alt="{{$img}}">
-                                        </a>
-                                    </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                            <!--/.Second slide-->
-
-                        </div>
-                        <!--End Slides-->
                     </div>
-                    <!--End Carousel Wrapper-->
-                    <!--Start Controls-->
-                    <div class="col-1 align-self-center">
-                        <a href="#multi-item-example" role="button" data-bs-slide="next">
-                            <i class="text-dark fas fa-chevron-right"></i>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </div>
-                    <!--End Controls-->
+                    
                 </div>
             </div>
             <!-- col end -->
@@ -107,18 +66,16 @@ $hotline=DB::table('settings')->where('name','hotline')->select('value')->first(
 @endsection
 @section('js')
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="{{ asset('public/owlcarousel/dist/owl.carousel.min.js') }}"></script>
 <script>
-    /*
-
-TemplateMo 559 Zay Shop
-
-https://templatemo.com/tm-559-zay-shop
-
-*/
 
     'use strict';
     $(document).ready(function() {
-
+        $("#owl-carousel").owlCarousel({
+            loop: false,
+            items: 5,
+            margin:0,
+        });
 
 
         // Product detail

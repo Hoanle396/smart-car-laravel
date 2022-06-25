@@ -5,7 +5,7 @@
 $name='name_'.app()->getlocale();
 @endphp
 <div class="position-relative flex justify-center items-center " style="margin-top: -10px;">
-    <img src="{{asset('public/images/istockphoto-1157655660-612x612.jpg')}}" class="w-100 img-fluid object-fit-cover">
+    <img src="{{asset('public/images/zyro-image.png')}}" class="w-100 img-fluid object-fit-cover">
     <div class="position-absolute bottom-0 start-0 d-flex flex-col items-center">
         <b class="text-danger fs-3">{{__('lang.tintuc')}}</b>
     </div>
@@ -25,7 +25,7 @@ $name='name_'.app()->getlocale();
 
                             @foreach($news as $new)
 
-                            <div class="col-12 d-flex border border-1 border-secondary rounded shadow mt-1">
+                            <div class="col-12 d-flex border  rounded shadow mt-1">
                                 <div class="col-4">
                                     <a href="{{URL::to('new/'.$new->id)}}">
                                         <img width="150" height="100" src="{{asset($new->images)}}" alt="{{$new->$name}}" class="object-fit-cover" data-was-processed="true">

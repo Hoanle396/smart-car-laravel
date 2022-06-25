@@ -40,6 +40,8 @@ Route::get('feed-back',function(){
     return view('pages.contact.feedback');
 });
 
+Route::post('feedback', [HomeController::class,'feedbackpost']);
+
 Route::get('news',[HomeController::class,'news']);
 Route::get('new/{id}',[HomeController::class,'new']);
 Route::get('service/{service}',[HomeController::class,'service']);

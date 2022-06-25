@@ -8,6 +8,7 @@ use App\Models\CarBrand;
 use App\Models\Service;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Models\Feedback;
 
 class HomeController extends Controller
 {
@@ -79,5 +80,13 @@ class HomeController extends Controller
     public function detail($id){
         $car=Car::where('id',$id)->get()->first();
         return view('pages.detailproduct',compact('car'));
+    }
+    public function feedbackpost(Request $request){
+        try {
+            $feedback =Feedback::create($request->all());
+            return redirect()->back()->with('success','Successfully!');
+        } catch (Exception $th) {
+            return redirect()->back()->with('error','Failed!');
+        }
     }
 }

@@ -24,7 +24,7 @@ $name='name_'.app()->getlocale();
                             </ul>
 
                             @foreach($services as $service)
-                            <div class="col-12 d-flex border border-1 border-secondary rounded shadow">
+                            <div class="col-12 d-flex border rounded shadow">
                                 <div class="col-4">
                                     <a href="{{URL::to('services/'.$service->id)}}">
                                         <img width="150" height="100" src="{{asset($service->images)}}" alt="{{$service->$name}}" class="object-fit-cover" data-was-processed="true">

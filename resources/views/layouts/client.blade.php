@@ -130,12 +130,12 @@ $zalo=DB::table('settings')->where('name','zalo')->select('value')->first();
                                 {{ __('lang.ngonngu') }}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="{{ URL::to('/lang/vi')}}">Tiếng Việt</a></li>
-                                <li><a class="dropdown-item" href="{{ URL::to('/lang/en')}}">English</a></li>
-                                <li><a class="dropdown-item" href="{{ URL::to('/lang/jp')}}">日本</a></li>
-                                <li><a class="dropdown-item" href="{{ URL::to('/lang/ko')}}">한국</a></li>
-                                <li><a class="dropdown-item" href="{{ URL::to('/lang/cn')}}">中国</a></li>
-                                <li><a class="dropdown-item" href="{{ URL::to('/lang/pt')}}">Portugal</a></li>
+                                <li><a class="dropdown-item" href="{{ URL::to('/lang/vi')}}"><img src="{{asset('public/images//vietnam.png')}}" width="40"  alt="VI" class="pe-2"/>Tiếng Việt</a></li>
+                                <li><a class="dropdown-item" href="{{ URL::to('/lang/en')}}"><img src="{{asset('public/images//england.png')}}" width="40"  alt="EN" class="pe-2"/>English</a></li>
+                                <li><a class="dropdown-item" href="{{ URL::to('/lang/jp')}}"><img src="{{asset('public/images//japan.png')}}" width="40"  alt="JP" class="pe-2"/>日本</a></li>
+                                <li><a class="dropdown-item" href="{{ URL::to('/lang/ko')}}"><img src="{{asset('public/images//korea.png')}}" width="40"  alt="KO" class="pe-2"/>한국</a></li>
+                                <li><a class="dropdown-item" href="{{ URL::to('/lang/cn')}}"><img src="{{asset('public/images//china.png')}}" width="40"  alt="CN" class="pe-2"/>中国</a></li>
+                                <li><a class="dropdown-item" href="{{ URL::to('/lang/pt')}}"><img src="{{asset('public/images//portugal.png')}}" width="40"  alt="PT" class="pe-2"/>Portugal</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -144,7 +144,7 @@ $zalo=DB::table('settings')->where('name','zalo')->select('value')->first();
             </div>
         </nav>
 
-        <main id="app" class="pt-2">
+        <main id="app" >
             @yield('content')
         </main>
 

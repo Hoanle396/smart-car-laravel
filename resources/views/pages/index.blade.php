@@ -16,8 +16,8 @@ $tukhoa=DB::table('settings')->where('name','tukhoa')->select('value')->first();
 $name='name_'.app()->getlocale();
 $description='description_'.app()->getlocale();
 @endphp
-<section class="awe-section-1 bg-white">
-    <div class="container-fluid mt-1">
+<section class="border shadow">
+    <div class="container-fluid">
         <div class="row top-sliders">
             <div class="col-md-8">
                 <div id="owl-carousel" class="owl-carousel owl-theme">
@@ -29,15 +29,18 @@ $description='description_'.app()->getlocale();
             <div class="left-owl pt-2 col-md-4 col-sm-12 col-xs-12">
                 <div class="row">
                     @foreach($news as $new)
-                    <div class="col-12 mt-1 d-flex border border-1 border-secondary rounded shadow">
+                    <div class="col-12 mt-1 d-flex border rounded shadow">
                         <div class="col-4">
-                            <img width="100" height="70" src="{{asset($new->images)}}" alt="{{$new->$name}}" class="" data-was-processed="true">
+                            <a href="{{URL::to('new/'.$new->id)}}">
+                                <img width="100" height="70" src="{{asset($new->images)}}" alt="{{$new->$name}}" class="" data-was-processed="true">
+                            </a>
                         </div>
                         <div class="col-8 ">
-                            <h5>{{substr($new->$name,0,40)}}</h5>
+                            <a href="{{URL::to('new/'.$new->id)}}" class="text-decoration-none ">
+                                <h5 class="text-black text-uppercase fs-6">{{substr($new->$name,0,25)}}</h5>
+                            </a>
                             <span>{{date_format($new->updated_at,'Y/m/d H:i')}}</span>
                         </div>
-
                     </div>
                     @endforeach
                 </div>
@@ -47,11 +50,11 @@ $description='description_'.app()->getlocale();
 </section>
 <section id="logo" class="pt-5">
     <div class="container">
-        <h5 class="text-uppercase fs-5">{{ __('lang.hangxe') }}</h5>
+        <h5 class="text-uppercase fs-5 pb-3">{{ __('lang.hangxe') }}</h5>
         <div class="row d-flex border border-1">
             <div id="slide" class="owl-carousel owl-theme bg-white">
                 @foreach($logos as $logo)
-                <div class="item shadow">
+                <div class="item border border-1">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 doitacimg">
                         <a href="{{URL::to('car/'.$logo->name)}}" class="thumbnail ">
                             <img class="img-logo px-4 py-4" src="{{asset($logo->logo)}}">
@@ -64,9 +67,9 @@ $description='description_'.app()->getlocale();
     </div>
 </section>
 
-<section class="mt-5">
+<section class="pt-5">
     <div class="container">
-        <h5 class="text-uppercase fs-5">{{ __('lang.xenoibat') }}</h5>
+        <h5 class="text-uppercase fs-5 pb-3">{{ __('lang.xenoibat') }}</h5>
         <div id="item" class="row d-flex row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             @foreach($cars as $car)
             <div class="col-md-3 mb-5">
@@ -77,11 +80,11 @@ $description='description_'.app()->getlocale();
                             <h5 class="fw-bolder">{{substr($car->$name, 0, 30)}}</h5>
                         </div>
                         <div class="d-flex justify-content-between">
-                            <span class="text-muted ">Km :{{$car->kilomet}}</span>
-                            <span class="text-muted ">Km : {{$car->manufacture}}</span>
+                            <span class="text-muted "><i class="fa-solid fa-gauge"></i> : {{$car->kilomet}}</span>
+                            <span class="text-muted "><i class="fa-solid fa-calendar-days"></i> : {{$car->manufacture}}</span>
                         </div>
                     </div>
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <div class="card-footer pt-0 border-top-0 bg-transparent">
                         <div class="text-center"><a class="btn btn-primary mt-auto" href="{{URL::to('/car/detail/'.$car->id)}}">{{ __('lang.chitiet')}}</a></div>
                     </div>
                 </div>
@@ -96,17 +99,16 @@ $description='description_'.app()->getlocale();
         <div class="row justify-content-center">
             <!-- ============= Post Content Area Start ============= -->
             <div class="col-12 col-lg-8">
-                <div class="post-content-area mb-100">
-                    <!-- Catagory Area -->
-                    <div class="world-catagory-area">
-                        <ul class="nav nav-tabs pb-2" id="myTab" role="tablist">
-                            <li class="title" style="font-size: 30px;">{{$papper->$name}}</li>
-                        </ul>
-                        <div class="card border border-1 border-secondary rounded shadow mt-2 ">
-                            {!!$papper->$description!!}
-                        </div>
-                    </div>
+                <div class=" mb-100">
+                    <ul class="nav nav-tabs pb-2" id="myTab" role="tablist">
+                        <li class="title" style="font-size: 30px;">{{$papper->$name}}</li>
+                    </ul>
                 </div>
+            </div>
+        </div>
+        <div class="w-auto mb-100">
+            <div class=" border rounded shadow d-flex py-2 px-2 justify-content-center">
+                {!!$papper->$description!!}
             </div>
         </div>
     </div>

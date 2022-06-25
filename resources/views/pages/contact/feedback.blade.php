@@ -26,8 +26,8 @@
 
                     <!--Grid column-->
                     <div class="col-md-9 mb-md-0 mb-5">
-                        <form id="contact-form" name="contact-form" action="mail.php" method="POST">
-
+                        <form id="contact-form" name="contact-form" action="{{URL::to('feedback')}}" method="POST">
+                            @csrf
                             <!--Grid row-->
                             <div class="row">
 
@@ -81,7 +81,13 @@
                                 <button class="btn btn-md btn-primary" type="submit">{{__('lang.gui')}}</button>
                             </div>
                         </form>
-                        <div class="status"></div>
+                        <div class="status">
+                                @if(session()->has('error'))
+                                   <div class="alert alert-danger form-control">{{session()->get('error')}}</div>
+                                @elseif(session()->has('success'))
+                                    <div class="alert alert-success form-control">{{session()->get('success')}}</div>
+                                @endif 
+                        </div>
                     </div>
                     <!--Grid column-->
 

@@ -22,6 +22,6 @@ return [
     'tieude'=>'Tiêu Đề',
     'noidung'=>'Nội Dung',
     'gui'=>'Gửi',
-    'question'=>'',
+    'question'=>'Bạn có câu hỏi nào không? Xin vui lòng liên hệ trực tiếp với chúng tôi. Nhóm của chúng tôi sẽ quay lại với bạn trong vòng vài giờ để giúp bạn.',
     'tinnoibat'=>'Tin Nổi Bật'
 ];

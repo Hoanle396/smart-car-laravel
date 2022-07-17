@@ -34,6 +34,37 @@ $zalo=DB::table('settings')->where('name','zalo')->select('value')->first();
     <div id="container" style="background-color:{{$background->value}} !important;">
         <div class="header container py-1 " id="header-top">
             <div class="flex-container ">
+                <div class="row ">
+                    <form name='theForm' id='theForm' action="{{URL::to('/lang')}}" method="post">
+                        @csrf
+                        <div class="d-flex flex-row-reverse">
+                            <div class="px-1">
+                                <input type="radio" onChange="autoSubmit();" <?php if (app()->getlocale() == 'pt') { ?>checked='checked' <?php } ?> id="pt" name="drone" value="pt">
+                                <label for="pt"><img src="{{asset('public/images//portugal.png')}}" width="25" alt="PT" class="pe-1" style="margin-top:-7px;" />Portugal</label>
+                            </div>
+                            <div class="px-1">
+                                <input type="radio" onChange="autoSubmit();" <?php if (app()->getlocale() == 'cn') { ?>checked='checked' <?php } ?>  id="cn" name="drone" value="cn">
+                                <label for="cn"><img src="{{asset('public/images//china.png')}}" width="25" alt="CN" class="pe-1" style="margin-top:-7px;" />中国</label>
+                            </div>
+                            <div class="px-1">
+                                <input type="radio" onChange="autoSubmit();" <?php if (app()->getlocale() == 'ko') { ?>checked='checked' <?php } ?>  id="ko" name="drone" value="ko">
+                                <label for="ko"><img src="{{asset('public/images//korea.png')}}" width="25" alt="KO" class="pe-1" style="margin-top:-7px;" />한국</label>
+                            </div>
+                            <div class="px-1">
+                                <input type="radio" onChange="autoSubmit();" <?php if (app()->getlocale() == 'jp') { ?>checked='checked' <?php } ?>  id="jp" name="drone" value="jp">
+                                <label for="jp"><img src="{{asset('public/images//japan.png')}}" width="25" alt="JP" class="pe-1" style="margin-top:-7px;" />日本</label>
+                            </div>
+                            <div class="px-1">
+                                <input type="radio" onChange="autoSubmit();" <?php if (app()->getlocale() == 'en') { ?>checked='checked' <?php } ?>  id="en" name="drone" value="en">
+                                <label for="en"><img src="{{asset('public/images//england.png')}}" width="25" alt="EN" class="pe-1" style="margin-top:-7px;" />English</label>
+                            </div>
+                            <div class="px-1">
+                                <input type="radio" onChange="autoSubmit();" <?php if (app()->getlocale() == 'vi') { ?>checked='checked' <?php } ?>  id="vi" name="drone" value="vi" >
+                                <label for="vi"><img src="{{asset('public/images//vietnam.png')}}" width="25" alt="VI" class="pe-1" style="margin-top:-7px;" />Tiếng Việt</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
                 <div class="row d-flex justify-content-between align-center">
                     <div class="col-md-4 col-12 col-xs-4 d-inline-flex">
                         @php
@@ -71,7 +102,7 @@ $zalo=DB::table('settings')->where('name','zalo')->select('value')->first();
         <nav id="mainnav" style="background-color: {{ $navcolor->value}} !important;" class="navbar navbar-expand-lg navbar-dark navbar-fixed-top bg-primary border-top-1 border-bottom-1 border-secondary shadow-lg">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img class="img img-responsive img-fluid" width="60" src="{{ $logo->value }}" alt="Logo" />
+                    <img class="img img-responsive img-fluid" width="80" src="{{ $logo->value }}" alt="Logo" />
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -125,26 +156,13 @@ $zalo=DB::table('settings')->where('name','zalo')->select('value')->first();
                                 {{ __('lang.tintuc') }}
                             </a>
                         </li>
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle text-uppercase" href="{{ URL::to('/contact') }}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                {{ __('lang.ngonngu') }}
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="{{ URL::to('/lang/vi')}}"><img src="{{asset('public/images//vietnam.png')}}" width="40"  alt="VI" class="pe-2"/>Tiếng Việt</a></li>
-                                <li><a class="dropdown-item" href="{{ URL::to('/lang/en')}}"><img src="{{asset('public/images//england.png')}}" width="40"  alt="EN" class="pe-2"/>English</a></li>
-                                <li><a class="dropdown-item" href="{{ URL::to('/lang/jp')}}"><img src="{{asset('public/images//japan.png')}}" width="40"  alt="JP" class="pe-2"/>日本</a></li>
-                                <li><a class="dropdown-item" href="{{ URL::to('/lang/ko')}}"><img src="{{asset('public/images//korea.png')}}" width="40"  alt="KO" class="pe-2"/>한국</a></li>
-                                <li><a class="dropdown-item" href="{{ URL::to('/lang/cn')}}"><img src="{{asset('public/images//china.png')}}" width="40"  alt="CN" class="pe-2"/>中国</a></li>
-                                <li><a class="dropdown-item" href="{{ URL::to('/lang/pt')}}"><img src="{{asset('public/images//portugal.png')}}" width="40"  alt="PT" class="pe-2"/>Portugal</a></li>
-                            </ul>
-                        </li>
                     </ul>
 
                 </div>
             </div>
         </nav>
 
-        <main id="app" >
+        <main id="app">
             @yield('content')
         </main>
 
@@ -298,6 +316,7 @@ $zalo=DB::table('settings')->where('name','zalo')->select('value')->first();
                     <button id="top-btn" class=" my-3 btn border-0 btn-warning"><i class="fa-solid fa-angles-up"></i></button>
                 </div>
             </div>
+
         </section>
 
 
@@ -316,6 +335,12 @@ $zalo=DB::table('settings')->where('name','zalo')->select('value')->first();
             behavior: "smooth"
         });
 
+
+
+        function autoSubmit() {
+            var formObject = document.forms['theForm'];
+            formObject.submit()
+        }
         // On scroll, Show/Hide the btn with animation
         window.onscroll = () => window.scrollY > 500 ? topBtn.style.opacity = 1 : topBtn.style.opacity = 0
     </script>

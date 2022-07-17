@@ -107,7 +107,7 @@ $description='description_'.app()->getlocale();
             </div>
         </div>
         <div class="w-auto mb-100">
-            <div class=" border rounded shadow d-flex py-2 px-2 justify-content-center">
+            <div class=" border rounded shadow py-2 px-2 justify-content-center">
                 {!!$papper->$description!!}
             </div>
         </div>

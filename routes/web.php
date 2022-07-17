@@ -23,11 +23,11 @@ Route::get('pass',function(){
     return view('pages.detailproduct');
 });
 
-Route::get('/lang/{locale}',function($locale){
-   if(!in_array($locale,['vi','en','jp','ko','cn','pt'])){
+Route::post('/lang',function(Request $request){
+   if(!in_array($request->drone,['vi','en','jp','ko','cn','pt'])){
     abort(404);
    }
-   session()->put('locale',$locale);
+   session()->put('locale',$request->drone);
    return redirect()->back();
 });
 Route::get('/',[HomeController::class,'index']);
